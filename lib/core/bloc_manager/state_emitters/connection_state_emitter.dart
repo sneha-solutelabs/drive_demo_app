@@ -1,6 +1,5 @@
 import 'package:flutter_deriv_api/services/connection/connection_service.dart';
 import 'package:flutter_deriv_api/state/connection/connection_cubit.dart';
-import 'package:flutter_deriv_bloc_manager/base_state_emitter.dart';
 import 'package:flutter_deriv_bloc_manager/manager.dart';
 
 import '../../enums.dart';

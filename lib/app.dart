@@ -13,8 +13,6 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -45,7 +43,6 @@ class _AppState extends State<App> {
             centerTitle: false,
           ),
         ),
-        navigatorKey: _navigatorKey,
         initialRoute: AppScreen.routeName,
         onUnknownRoute: (RouteSettings settings) => MaterialPageRoute<void>(
           settings: settings,

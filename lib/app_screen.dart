@@ -24,7 +24,6 @@ class _AppScreenState extends State<AppScreen> {
   @override
   void dispose() {
     BlocManager.instance.dispose<connection_cubit.ConnectionCubit>();
-
     super.dispose();
   }
 
@@ -40,13 +39,13 @@ class _AppScreenState extends State<AppScreen> {
         bloc: _connectionCubit,
         builder:  (BuildContext context, connection_cubit.ConnectionState state){
           if (state is connection_cubit.ConnectionConnectedState) {
-             return const DashboardPage();
+            return const DashboardPage();
           }else if(state is connection_cubit.ConnectionConnectingState){
             return _buildCenterText('Connecting...');
           }else if(state is connection_cubit.ConnectionErrorState){
             return _buildCenterText(state.error);
           }else{
-            return _buildCenterText('connection lost');
+            return _buildCenterText('Connection lost');
           }
         },
       ),

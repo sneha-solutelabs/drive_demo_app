@@ -12,4 +12,5 @@ abstract class ActiveSymbolsEventListener implements BaseEventListener {
 
   /// On ActiveSymbols error event handler.
   void onActiveSymbolsError(String error);
+
 }

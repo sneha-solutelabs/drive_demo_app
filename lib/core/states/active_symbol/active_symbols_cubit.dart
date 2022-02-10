@@ -5,9 +5,7 @@ import 'package:flutter_deriv_api/basic_api/generated/api.dart';
 import 'active_symbols_state.dart';
 
 class ActiveSymbolCubit extends Cubit<ActiveSymbolState>{
-  ActiveSymbolCubit() : super(ActiveSymbolInitialState()){
-    fetchActiveSymbols();
-  }
+  ActiveSymbolCubit() : super(ActiveSymbolInitialState());
   static const String _activeSymbolType = 'brief';
   static const String _productType = 'basic';
 
@@ -21,8 +19,7 @@ class ActiveSymbolCubit extends Cubit<ActiveSymbolState>{
       await _fetchActiveSymbols();
       emit(
         ActiveSymbolLoadedState(
-          activeSymbols: activeSymbols
-        ),
+            activeSymbols: activeSymbols),
       );
     } on Exception catch (e) {
       emit(ActiveSymbolErrorState('$e'));
