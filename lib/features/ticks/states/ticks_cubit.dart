@@ -6,7 +6,10 @@ import 'package:flutter_deriv_api/api/common/forget/forget_all.dart';
 import 'package:flutter_deriv_api/api/common/tick/tick.dart';
 import 'package:flutter_deriv_api/basic_api/generated/api.dart';
 
-class TicksCubit extends Cubit<TicksState> implements SelectedSymbolEventListener {
+///Ticks cubit for managing ticks state.
+class TicksCubit extends Cubit<TicksState>
+    implements SelectedSymbolEventListener {
+  /// Initializes ticks state.
   TicksCubit() : super(TicksLoadingState());
 
   Future<void> subscribeTicks({required ActiveSymbol selectedSymbol}) async {

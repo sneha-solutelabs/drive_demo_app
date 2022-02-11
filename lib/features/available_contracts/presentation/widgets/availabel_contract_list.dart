@@ -5,7 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_deriv_api/api/contract/models/available_contract_model.dart';
 import 'package:flutter_deriv_bloc_manager/manager.dart';
 
+///Available contract list widget
 class AvailableContractList extends StatefulWidget {
+  ///Initializes
   const AvailableContractList({Key? key}) : super(key: key);
 
   @override
@@ -31,64 +33,61 @@ class _AvailableContractList extends State<AvailableContractList> {
 
   @override
   Widget build(BuildContext context) {
-    Widget _listWidget(AvailableContractModel? contract){
-      return Container(
+    Widget _listWidget(AvailableContractModel? contract)=> Container(
         padding: const EdgeInsets.all(12) ,
         decoration: BoxDecoration(
             border: Border.all(color: Colors.grey),
-            borderRadius: BorderRadius.circular(8.0)
+            borderRadius: BorderRadius.circular(8)
         ),
         child: Column(
-          children: [
+          children:<Widget> [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Expanded(child: Text("Category")),
-                Expanded(child: Text(contract!.contractCategory??""))
+              children: <Widget>[
+                const Expanded(child: Text('Category')),
+                Expanded(child: Text(contract!.contractCategory??''))
               ],
             ),
             const SizedBox(height: 4,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Expanded(child: Text("Name")),
-                Expanded(child: Text(contract.exchangeName??""))
+              children: <Widget>[
+                const Expanded(child: Text('Name')),
+                Expanded(child: Text(contract.exchangeName??''))
               ],
             ),
             const SizedBox(height: 4,),
             Row(
-              children: [
-                const Expanded(child: Text("Market")),
-                Expanded(child: Text(contract.market??""))
+              children: <Widget>[
+                const Expanded(child: Text('Market')),
+                Expanded(child: Text(contract.market??''))
               ],
             ),
             const SizedBox(height: 4,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const Expanded(child: Text("SubMarket")),
-                Expanded(child: Text(contract.submarket??""))
+              children: <Widget>[
+                const Expanded(child: Text('SubMarket')),
+                Expanded(child: Text(contract.submarket??''))
               ],
             )
           ],
         ),
       );
-    }
     
     return BlocBuilder<AvailableContractCubit,
         AvailableContractsState>(
         bloc: _availableContractCubit,
         builder: (BuildContext context, AvailableContractsState state) {
           if (state is AvailableContractsLoaded) {
-            List<AvailableContractModel?>? contracts = state.contracts?.availableContracts ??[];
+            final List<AvailableContractModel?>? contracts =
+                state.contracts?.availableContracts ??[];
             return ListView.builder(
-              itemCount: contracts.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.fromLTRB(0,0,0,8),
-                  child: _listWidget(contracts[index]),
-                );
-              },
+              itemCount: contracts?.length,
+              itemBuilder: (BuildContext context, int index) =>Padding(
+                padding: const EdgeInsets.fromLTRB(0,0,0,8),
+                child: _listWidget(contracts?[index]),
+              ),
             );
           }else if(state is AvailableContractsError){
             return Center(child: Text(state.errorMessage));

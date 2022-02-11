@@ -4,10 +4,15 @@ import 'package:drive_poc/core/bloc_manager/event_listener_contracts/active_symb
 import 'package:drive_poc/core/states/selected_active_symbol/selected_symbol_state.dart';
 import 'package:flutter_deriv_api/api/common/active_symbols/active_symbols.dart';
 
-class SelectSymbolCubit extends Cubit<SelectedSymbolState> implements ActiveSymbolsEventListener{
+/// Selected symbol cubit for managing selected symbol state.
+class SelectSymbolCubit extends Cubit<SelectedSymbolState> implements
+    ActiveSymbolsEventListener{
+
+  /// Initializes selected symbol state.
   SelectSymbolCubit() : super(SelectedSymbolInitialState());
 
-  selectActiveSymbol(ActiveSymbol symbol) async {
+  /// selected symbol states change
+  void selectActiveSymbol(ActiveSymbol symbol) {
     emit(
         SelectSymbolChangeState(
             selectedActiveSymbol: symbol
@@ -16,7 +21,6 @@ class SelectSymbolCubit extends Cubit<SelectedSymbolState> implements ActiveSymb
 
   @override
   void onActiveSymbolsError(String error) {
-    // TODO: implement onActiveSymbolsError
   }
 
   @override
@@ -26,10 +30,6 @@ class SelectSymbolCubit extends Cubit<SelectedSymbolState> implements ActiveSymb
 
   @override
   void onActiveSymbolsLoading() {
-  }
-
-  @override
-  void onActiveSymbolsSelected(ActiveSymbol selectedSymbol) {
   }
 }
 

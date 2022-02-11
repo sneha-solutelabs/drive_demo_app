@@ -5,9 +5,8 @@ import 'package:drive_poc/features/dashboard/presentation/pages/dash_bord_page.d
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+///poc app
 class App extends StatefulWidget {
-  const App({Key? key}) : super(key: key);
-
   @override
   State<App> createState() => _AppState();
 }
@@ -49,7 +48,8 @@ class _AppState extends State<App> {
           builder: (BuildContext context) => const AppScreen(),
         ),
         routes: <String, WidgetBuilder>{
-          DashboardPage.routeName: (BuildContext context) => const DashboardPage()
+          DashboardPage.routeName: (BuildContext context) =>
+          DashboardPage()
         },
       ),
     );

@@ -1,9 +1,11 @@
 import 'package:flutter_deriv_api/api/contract/contracts_for/contracts_for_symbol.dart';
 
+/// Base state for available contracts
 abstract class AvailableContractsState {}
 
+/// Loading state for available contracts
 class AvailableContractsLoading extends AvailableContractsState {}
-
+/// Error state for available contracts
 class AvailableContractsError extends AvailableContractsState {
   /// Initializes
   AvailableContractsError(this.errorMessage);
@@ -12,13 +14,14 @@ class AvailableContractsError extends AvailableContractsState {
   final String errorMessage;
 }
 
+///Loaded state for available contracts
 class AvailableContractsLoaded extends AvailableContractsState {
   /// Initializes
   AvailableContractsLoaded({
     this.contracts,
   });
 
-  /// Active symbols
+  /// Contracts
   final ContractsForSymbol? contracts;
 
 }

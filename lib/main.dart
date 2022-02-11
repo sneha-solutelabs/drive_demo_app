@@ -15,9 +15,10 @@ void main() {
   Bloc.observer = CubitObserver();
   registerCoreBlocs();
   initializeEventDispatcher();
-  runApp(const App());
+  runApp(App());
 }
 
+/// Registers common bloc and cubit to BlocManager
 void registerCoreBlocs() {
   BlocManager.instance
     ..register(

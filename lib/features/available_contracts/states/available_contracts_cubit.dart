@@ -5,10 +5,14 @@ import 'package:flutter_deriv_api/api/common/active_symbols/active_symbols.dart'
 import 'package:flutter_deriv_api/api/contract/contracts_for/contracts_for_symbol.dart';
 import 'package:flutter_deriv_api/basic_api/generated/contracts_for_send.dart';
 
-class AvailableContractCubit extends Cubit<AvailableContractsState> implements SelectedSymbolEventListener {
-  AvailableContractCubit() : super(AvailableContractsLoading()){}
-
-  Future<void> fetchAvailableContract({bool showLoadingIndicator = true,required ActiveSymbol selectedSymbol}) async {
+/// Available contract cubit for managing available contract state.
+class AvailableContractCubit extends Cubit<AvailableContractsState> implements
+    SelectedSymbolEventListener {
+  /// Initializes available contract state.
+  AvailableContractCubit() : super(AvailableContractsLoading());
+  /// fetch available contracts for selected symbol
+  Future<void> fetchAvailableContract({required ActiveSymbol selectedSymbol,
+    bool showLoadingIndicator = true}) async {
     try {
       if (showLoadingIndicator) {
         emit(AvailableContractsLoading());

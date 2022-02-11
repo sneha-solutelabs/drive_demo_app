@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_deriv_bloc_manager/manager.dart';
 
-
+///Active symbol drop-down widget
 class ActiveSymbolsDropDown extends StatefulWidget {
+  ///Initializes  active symbols dropDown
   const ActiveSymbolsDropDown({Key? key}) : super(key: key);
 
   @override
@@ -41,8 +42,9 @@ class _ActiveSymbolsDropDownState extends State<ActiveSymbolsDropDown> {
       builder: (BuildContext context, ActiveSymbolState state) {
         if (state is ActiveSymbolLoadedState) {
           return Column(
-            children: [
+            children: <Widget>[
               DropDownMenu(
+                key: const Key('drop_down'),
                 items: state.activeSymbols,
                 initialItem: state.activeSymbols[0],
                 onItemSelected: <ActiveSymbol>(dynamic item) {

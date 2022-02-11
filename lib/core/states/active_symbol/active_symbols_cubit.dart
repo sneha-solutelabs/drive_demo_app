@@ -4,11 +4,14 @@ import 'package:flutter_deriv_api/basic_api/generated/api.dart';
 
 import 'active_symbols_state.dart';
 
+/// Active symbol cubit for managing active symbol state.
 class ActiveSymbolCubit extends Cubit<ActiveSymbolState>{
+  /// Initializes active symbol state.
   ActiveSymbolCubit() : super(ActiveSymbolInitialState());
   static const String _activeSymbolType = 'brief';
   static const String _productType = 'basic';
 
+  /// Fetches active symbols list.
   Future<void> fetchActiveSymbols({bool showLoadingIndicator = true}) async {
     try {
       if (showLoadingIndicator) {

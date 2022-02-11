@@ -1,6 +1,7 @@
 import 'package:flutter_deriv_bloc_manager/manager.dart';
 import '../../enums.dart';
 
+/// Interface for blocs that need Deriv Connection status.
 abstract class ConnectionEventListener implements BaseEventListener {
   /// On web socket connected event handler.
   void onConnected();

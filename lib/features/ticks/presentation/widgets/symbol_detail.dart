@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_deriv_bloc_manager/manager.dart';
 
+///name and price for selected symbol widget
 class SelectedSymbolDetail extends StatefulWidget {
+  /// Initializes
   const SelectedSymbolDetail({Key? key}) : super(key: key);
 
   @override
@@ -31,54 +33,50 @@ class _SelectedSymbolDetailState extends State<SelectedSymbolDetail> {
     super.dispose();
   }
 
-  Widget _priceWidget(){
-    return BlocBuilder<TicksCubit,
+  Widget _priceWidget()=> BlocBuilder<TicksCubit,
         TicksState>(
       bloc: _ticksCubit,
       builder:  (BuildContext context, TicksState state){
         if(state is TicksLoaded){
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Expanded(child: Text("Price")),
+            children: <Widget>[
+              const Expanded(child: Text('Price')),
               Expanded(child: Text('${state.tick?.quote??0.0}'))
             ],
           );
         }else {
           return Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Expanded(child: Text("Price")),
+              children: const <Widget> [
+                Expanded(child: Text('Price')),
               ]
           );
         }
       },
     );
-  }
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<SelectSymbolCubit,
+  Widget build(BuildContext context) => BlocBuilder<SelectSymbolCubit,
         SelectedSymbolState>(
       bloc: _selectedSymbolCubit,
       builder: (BuildContext context, SelectedSymbolState state) {
         if(state is SelectSymbolChangeState){
           return Column(
-            children: [
+            children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Expanded(child: Text("Symbol Name")),
-                  Expanded(child: Text(state.selectedActiveSymbol.symbol??""))
+                children: <Widget>[
+                  const Expanded(child: Text('Symbol Name')),
+                  Expanded(child: Text(state.selectedActiveSymbol.symbol??''))
                 ],
               ),
-              const SizedBox(height: 8,),
+              const SizedBox(height: 8),
               _priceWidget()
             ],
           );
         }else{
-          return const Text("Loading");
+          return const Text('Loading');
         }
       },
     );
-  }
 }
