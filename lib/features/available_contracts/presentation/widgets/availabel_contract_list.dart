@@ -34,54 +34,56 @@ class _AvailableContractList extends State<AvailableContractList> {
   @override
   Widget build(BuildContext context) {
     Widget _listWidget(AvailableContractModel? contract)=> Container(
-        padding: const EdgeInsets.all(12) ,
-        decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey),
-            borderRadius: BorderRadius.circular(8)
-        ),
-        child: Column(
-          children:<Widget> [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                const Expanded(child: Text('Category')),
-                Expanded(child: Text(contract!.contractCategory??''))
-              ],
-            ),
-            const SizedBox(height: 4,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                const Expanded(child: Text('Name')),
-                Expanded(child: Text(contract.exchangeName??''))
-              ],
-            ),
-            const SizedBox(height: 4,),
-            Row(
-              children: <Widget>[
-                const Expanded(child: Text('Market')),
-                Expanded(child: Text(contract.market??''))
-              ],
-            ),
-            const SizedBox(height: 4,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                const Expanded(child: Text('SubMarket')),
-                Expanded(child: Text(contract.submarket??''))
-              ],
-            )
-          ],
-        ),
-      );
-    
+      padding: const EdgeInsets.all(12) ,
+      decoration: BoxDecoration(
+          border: Border.all(color: Colors.grey),
+          borderRadius: BorderRadius.circular(8)
+      ),
+      child: Column(
+        children:<Widget> [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              const Expanded(child: Text('Category')),
+              Expanded(child: Text(contract!.contractCategory??''))
+            ],
+          ),
+          const SizedBox(height: 4,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              const Expanded(child: Text('Name')),
+              Expanded(child: Text(contract.exchangeName??''))
+            ],
+          ),
+          const SizedBox(height: 4,),
+          Row(
+            children: <Widget>[
+              const Expanded(child: Text('Market')),
+              Expanded(child: Text(contract.market??''))
+            ],
+          ),
+          const SizedBox(height: 4,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              const Expanded(child: Text('SubMarket')),
+              Expanded(child: Text(contract.submarket??''))
+            ],
+          )
+        ],
+      ),
+    );
+
     return BlocBuilder<AvailableContractCubit,
         AvailableContractsState>(
+        key: const Key('builder'),
         bloc: _availableContractCubit,
         builder: (BuildContext context, AvailableContractsState state) {
           if (state is AvailableContractsLoaded) {
             final List<AvailableContractModel?>? contracts =
-                state.contracts?.availableContracts ??[];
+                state.contracts?.availableContracts ??
+                    <AvailableContractModel>[];
             return ListView.builder(
               itemCount: contracts?.length,
               itemBuilder: (BuildContext context, int index) =>Padding(
@@ -90,9 +92,13 @@ class _AvailableContractList extends State<AvailableContractList> {
               ),
             );
           }else if(state is AvailableContractsError){
-            return Center(child: Text(state.errorMessage));
+            return Center(
+                child: Text(state.errorMessage));
           } else {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+              key: Key('progress'),
+              child: CircularProgressIndicator(),
+            );
           }
         }
     );

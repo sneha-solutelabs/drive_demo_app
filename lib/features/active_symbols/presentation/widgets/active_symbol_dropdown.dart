@@ -42,6 +42,7 @@ class _ActiveSymbolsDropDownState extends State<ActiveSymbolsDropDown> {
       builder: (BuildContext context, ActiveSymbolState state) {
         if (state is ActiveSymbolLoadedState) {
           return Column(
+            key: const Key('active_symbol'),
             children: <Widget>[
               DropDownMenu(
                 key: const Key('drop_down'),

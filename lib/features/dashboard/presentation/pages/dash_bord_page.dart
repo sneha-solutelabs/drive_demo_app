@@ -24,10 +24,15 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) => Padding(
       padding: const EdgeInsets.all(8),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: const<Widget> [
+          Text('Active Symbols :'),
+          SizedBox(height: 8,),
           ActiveSymbolsDropDown(),
           SizedBox(height: 8,),
           SelectedSymbolDetail(),
+          SizedBox(height: 16,),
+          Text('Available Contracts :'),
           SizedBox(height: 8,),
           Expanded(child: AvailableContractList())
         ],

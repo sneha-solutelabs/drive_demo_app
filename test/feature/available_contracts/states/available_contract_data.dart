@@ -5,24 +5,25 @@ final ContractsForSymbol availableContracts =  ContractsForSymbol(
   availableContracts : availableContractsList,
 );
 
-final List<AvailableContractModel> availableContractsList = [
+final List<AvailableContractModel> availableContractsList =
+<AvailableContractModel>[
   AvailableContractModel(
-  barrierCategory : "american",
-  contractCategory: "touchnotouch",
-  contractCategoryDisplay: "Touch/No Touch",
-  contractDisplay: "Touches",
-  exchangeName: "RANDOM",
-  market: "synthetic_index",
-  submarket: "random_index",
+  barrierCategory : 'american',
+  contractCategory: 'touchnotouch',
+  contractCategoryDisplay: 'Touch/No Touch',
+  contractDisplay: 'Touches',
+  exchangeName: 'RANDOM',
+  market: 'synthetic_index',
+  submarket: 'random_index',
   ),
   AvailableContractModel(
-    barrierCategory : "american",
-    contractCategory: "touchnotouch",
-    contractCategoryDisplay: "Touch/No Touch",
-    contractDisplay: "Touches",
-    exchangeName: "RANDOM",
-    market: "synthetic_index",
-    submarket: "random_index",
+    barrierCategory : 'american',
+    contractCategory: 'touchnotouch',
+    contractCategoryDisplay: 'Touch/No Touch',
+    contractDisplay: 'Touches',
+    exchangeName: 'RANDOM',
+    market: 'synthetic_index',
+    submarket: 'random_index',
   ),
 ];
 

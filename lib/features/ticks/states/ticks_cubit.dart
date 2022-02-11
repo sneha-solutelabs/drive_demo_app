@@ -12,11 +12,12 @@ class TicksCubit extends Cubit<TicksState>
   /// Initializes ticks state.
   TicksCubit() : super(TicksLoadingState());
 
+  ///subscribe ticks
   Future<void> subscribeTicks({required ActiveSymbol selectedSymbol}) async {
     try {
       emit(TicksLoadingState());
 
-      _unsubscribeTick();
+      await _unsubscribeTick();
 
       _subscribeTick(selectedSymbol)
           .listen((Tick? tick) {

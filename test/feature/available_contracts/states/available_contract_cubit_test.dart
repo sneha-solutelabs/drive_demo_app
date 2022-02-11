@@ -19,7 +19,8 @@ class MockSyncTimeCubit extends MockCubit<SyncTimeState>
   DateTime get now => DateTime.now();
 }
 
-class FakeAvailableContractState extends Fake implements AvailableContractsState {}
+class FakeAvailableContractState extends Fake
+    implements AvailableContractsState {}
 
 class FakeSyncTimeState extends Fake implements SyncTimeState {}
 
@@ -34,11 +35,13 @@ void main() {
 
   group('Available contract cubit test =>', () {
     test('Available contract fetch', () async {
-      final MockAvailableContractCubit activeSymbolCubit = MockAvailableContractCubit();
+      final MockAvailableContractCubit activeSymbolCubit =
+      MockAvailableContractCubit();
 
       whenListen(
           activeSymbolCubit,
-          Stream<AvailableContractsState>.fromIterable(<AvailableContractsState>[
+          Stream<AvailableContractsState>.
+          fromIterable(<AvailableContractsState>[
             AvailableContractsLoading(),
             AvailableContractsLoaded(contracts : availableContracts),
           ]));
@@ -51,9 +54,12 @@ void main() {
           ]));
 
 
-      expect((activeSymbolCubit.state as AvailableContractsLoaded), isA<AvailableContractsLoaded>());
-      expect((activeSymbolCubit.state as AvailableContractsLoaded).contracts, isNotNull);
-      expect((activeSymbolCubit.state as AvailableContractsLoaded).contracts, isA<ContractsForSymbol>());
+      expect(activeSymbolCubit.state as AvailableContractsLoaded,
+          isA<AvailableContractsLoaded>());
+      expect((activeSymbolCubit.state as AvailableContractsLoaded).contracts,
+          isNotNull);
+      expect((activeSymbolCubit.state as AvailableContractsLoaded).contracts,
+          isA<ContractsForSymbol>());
     });
   });
 

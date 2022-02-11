@@ -47,6 +47,7 @@ class _SelectedSymbolDetailState extends State<SelectedSymbolDetail> {
           );
         }else {
           return Row(
+            key: const Key('ticks Loading state widget'),
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const <Widget> [
                 Expanded(child: Text('Price')),
@@ -62,6 +63,7 @@ class _SelectedSymbolDetailState extends State<SelectedSymbolDetail> {
       builder: (BuildContext context, SelectedSymbolState state) {
         if(state is SelectSymbolChangeState){
           return Column(
+            key: const Key('detail_column'),
             children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

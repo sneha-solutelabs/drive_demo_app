@@ -53,9 +53,11 @@ void main() {
             isA<ActiveSymbolLoadedState>(),
           ]));
 
-      expect((activeSymbolCubit.state as ActiveSymbolLoadedState), isA<ActiveSymbolLoadedState>());
+      expect(activeSymbolCubit.state as ActiveSymbolLoadedState,
+          isA<ActiveSymbolLoadedState>());
 
-      expect((activeSymbolCubit.state as ActiveSymbolLoadedState).activeSymbols, isA<List<ActiveSymbol>>());
+      expect((activeSymbolCubit.state as ActiveSymbolLoadedState).activeSymbols
+          , isA<List<ActiveSymbol>>());
     });
 
     final Exception exception = Exception('active symbol cubit exception.');

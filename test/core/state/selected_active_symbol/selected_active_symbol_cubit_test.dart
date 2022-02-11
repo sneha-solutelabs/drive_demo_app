@@ -37,7 +37,8 @@ void main() {
 
   group('Selected symbols cubit test =>', () {
     test('selected symbols. change', () async {
-      final MockSelectedSymbolCubit activeSymbolCubit = MockSelectedSymbolCubit();
+      final MockSelectedSymbolCubit activeSymbolCubit =
+      MockSelectedSymbolCubit();
 
       whenListen(
           activeSymbolCubit,
@@ -53,9 +54,13 @@ void main() {
             isA<SelectSymbolChangeState>(),
           ]));
 
-      expect((activeSymbolCubit.state as SelectSymbolChangeState), isA<SelectSymbolChangeState>());
+      expect(activeSymbolCubit.state as SelectSymbolChangeState,
+          isA<SelectSymbolChangeState>());
 
-      expect((activeSymbolCubit.state as SelectSymbolChangeState).selectedActiveSymbol, isA<ActiveSymbol>());
+      expect(
+          (activeSymbolCubit.state as SelectSymbolChangeState)
+              .selectedActiveSymbol,
+          isA<ActiveSymbol>());
     });
   });
 }
